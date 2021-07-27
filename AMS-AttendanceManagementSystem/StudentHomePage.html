@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            font-family:'Garamond';
+            font-size:110%;
+            color:#D79D30;
+            background-color:Black;
+            padding-left: 8px;
+        }
+        .topnav{
+            width: 100%;
+            overflow: hidden;
+            background-color:#D79D30;
+        }
+        .topnav a{
+            float: right;
+              color: Black;
+              text-align: center;
+              padding: 14px 16px;
+              text-decoration: none;
+              font-size: 17px;
+              width:12%;
+        }
+    
+        .topnav a:hover{
+            color:#fbfcd4;
+        }
+        .topnav a.active {
+              color: #fbfcd4;
+          }
+    
+          table {
+              width: 50%;
+              padding: 10px;
+          }
+    
+          th,td{
+              height: 35px;
+              vertical-align: middle;
+              padding: 15px;
+              text-align: left;
+              background-color: #151515;
+          }
+    
+          a{
+              text-decoration: none;
+              color:#D79D30;
+    
+          }
+          .courseref{ background-color: #151515;font-style: italic;}
+          	
+          .courseref:hover{
+              background-color: #0A0A0A;
+          }
+
+          .section {
+              margin-left: 450px;
+          }
+          li{
+              padding: 10px;
+          }
+          aside {
+          position: fixed;
+          width: 400px;
+          padding-left: 10px;
+          float: left;
+          font-style: italic;
+          background-color: #151515;
+          color: #D79D30;
+        }
+
+        h1{
+            font-size: 25px;
+            padding-left: 1.2%;
+        }
+    
+    </style>
+   
+
+
+    <script>
+        var request; 
+        var request1; 
+        function sendInfo(value)  
+        {   
+            if(window.XMLHttpRequest){  
+            request=new XMLHttpRequest();  
+            }  
+            else if(window.ActiveXObject){  
+            request=new ActiveXObject("Microsoft.XMLHTTP");  
+            }  
+            
+            try  
+            {  
+                request.onreadystatechange=getInfo;  
+                request.open("GET", "./StudentHomePageServlet", true);
+                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.send(); 
+            }  
+            catch(e)  
+            {  
+            alert("Unable to connect to server");  
+            }  
+        }  
+          
+        function getInfo(){  
+        if(request.readyState==4 && request.status==200){   
+            var val=request.responseText;
+            document.getElementById('classes').innerHTML=val;  
+        }  
+        }  
+
+
+
+        function getNotifs(value)  
+        {   
+            if(window.XMLHttpRequest){  
+            request1=new XMLHttpRequest();  
+            }  
+            else if(window.ActiveXObject){  
+            request1=new ActiveXObject("Microsoft.XMLHTTP");  
+            }  
+            
+            try  
+            {  
+                request1.onreadystatechange=printNotifs;  
+                request1.open("GET", "./StudentNotificationServlet", true);
+                request1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request1.send(); 
+            }  
+            catch(e)  
+            {  
+            alert("Unable to connect to server");  
+            }  
+        }  
+          
+        function printNotifs(){  
+        if(request1.readyState==4 && request1.status==200){   
+            var val1=request1.responseText;
+            document.getElementById('notifs').innerHTML=document.getElementById('notifs').innerHTML+val1;  
+        }  
+        } 
+
+    </script>
+
+
+</head>
+
+<body onload="sendInfo();getNotifs()">
+<div class="container">
+	<img class="logo" src="logo.jpg" style="width:6%;height:16%;float:left" alt="logo">
+	<h2 style="align-self:left;color:#D79D30;padding-top: 20px;"> Attendance Management System</h2>
+	<div class="topnav">
+		<a href="AMSLogout">Logout</a>
+		<a href="./StudentDiscrepancyHome.html">Discrepancy</a>
+		<a href="./StudentODHome.html">OD</a>
+		<a class="active" href="./StudentHomePage.html">Home</a>
+	</div>
+</div>
+
+<aside id="notifs">
+	<p> Notification panel</p>
+</aside>
+
+<div class="section">
+	<form action="StudentCourseAttendanceServlet" method="POST">
+		<div class="courses" id="classes">
+		</div>
+	</form>
+</div>
+
+</body>
+
+</html>

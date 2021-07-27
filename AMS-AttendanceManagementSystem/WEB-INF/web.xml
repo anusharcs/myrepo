@@ -1,0 +1,301 @@
+<web-app>
+
+
+<servlet>
+   <servlet-name>AMSLoginServlet</servlet-name>
+   <servlet-class>AMSLoginServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>AMSLoginServlet</servlet-name>
+   <url-pattern>/AMSLogin</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>AMSLogoutServlet</servlet-name>
+   <servlet-class>AMSLogoutServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>AMSLogoutServlet</servlet-name>
+   <url-pattern>/AMSLogout</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>FacultyHomePageServlet</servlet-name>
+   <servlet-class>FacultyHomePageServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>FacultyHomePageServlet</servlet-name>
+   <url-pattern>/Faculty</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>FacultyCourseAttendanceServlet</servlet-name>
+   <servlet-class>FacultyCourseAttendanceServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>FacultyCourseAttendanceServlet</servlet-name>
+   <url-pattern>/CourseAttendance</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+   <servlet-name>FacultyTakeAttendance</servlet-name>
+   <servlet-class>FacultyTakeAttendance</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>FacultyTakeAttendance</servlet-name>
+   <url-pattern>/Attendance</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>FacultySubmitAttendance</servlet-name>
+   <servlet-class>FacultySubmitAttendance</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>FacultySubmitAttendance</servlet-name>
+   <url-pattern>/SubmitAttendance</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>FacultyODPageServlet</servlet-name>
+   <servlet-class>FacultyODPageServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>FacultyODPageServlet</servlet-name>
+   <url-pattern>/FacultyOD</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>FacultyDiscrepancyPageServlet</servlet-name>
+   <servlet-class>FacultyDiscrepancyPageServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>FacultyDiscrepancyPageServlet</servlet-name>
+   <url-pattern>/FacultyDiscrepancy</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+   <servlet-name>FacultyProcessOD</servlet-name>
+   <servlet-class>FacultyProcessOD</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>FacultyProcessOD</servlet-name>
+   <url-pattern>/FacultyProcessOD</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>FacultyProcessDiscrepancy</servlet-name>
+   <servlet-class>FacultyProcessDiscrepancy</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>FacultyProcessDiscrepancy</servlet-name>
+   <url-pattern>/FacultyProcessDiscrepancy</url-pattern>
+</servlet-mapping>
+
+
+
+  <servlet>
+   <servlet-name>StudentCourseAttendanceServlet</servlet-name>
+   <servlet-class>StudentCourseAttendanceServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>StudentCourseAttendanceServlet</servlet-name>
+   <url-pattern>/StudentAttendance</url-pattern>
+</servlet-mapping>
+
+
+  <servlet>
+   <servlet-name>FacultyAddAbsenteeServlet</servlet-name>
+   <servlet-class>FacultyAddAbsenteeServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>FacultyAddAbsenteeServlet</servlet-name>
+   <url-pattern>/AddAbsentee</url-pattern>
+</servlet-mapping>
+
+  <servlet>
+   <servlet-name>FacultyRemoveAbsenteeServlet</servlet-name>
+   <servlet-class>FacultyRemoveAbsenteeServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>FacultyRemoveAbsenteeServlet</servlet-name>
+   <url-pattern>/RemoveAbsentee</url-pattern>
+</servlet-mapping>
+
+
+
+  <servlet>
+   <servlet-name>StudentHomePageServlet</servlet-name>
+   <servlet-class>StudentHomePageServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>StudentHomePageServlet</servlet-name>
+   <url-pattern>/StudentHomePageServlet</url-pattern>
+</servlet-mapping>
+
+  <servlet>
+   <servlet-name>StudentODViewServlet</servlet-name>
+   <servlet-class>StudentODViewServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>StudentODViewServlet</servlet-name>
+   <url-pattern>/StudentODViewServlet</url-pattern>
+</servlet-mapping>
+
+  <servlet>
+   <servlet-name>StudentDiscrepancyViewServlet</servlet-name>
+   <servlet-class>StudentDiscrepancyViewServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>StudentDiscrepancyViewServlet</servlet-name>
+   <url-pattern>/StudentDiscrepancyViewServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>StudentODSubmitServlet</servlet-name>
+   <servlet-class>StudentODSubmitServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>StudentODSubmitServlet</servlet-name>
+   <url-pattern>/StudentODSubmitServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>StudentDiscrepancySubmitServlet</servlet-name>
+   <servlet-class>StudentDiscrepancySubmitServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>StudentDiscrepancySubmitServlet</servlet-name>
+   <url-pattern>/StudentDiscrepancySubmitServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>StudentNotificationServlet</servlet-name>
+   <servlet-class>StudentNotificationServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>StudentNotificationServlet</servlet-name>
+   <url-pattern>/StudentNotificationServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>AdminAddFacultyServlet</servlet-name>
+   <servlet-class>AdminAddFacultyServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>AdminAddFacultyServlet</servlet-name>
+   <url-pattern>/AdminAddFacultyServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>AdminDeleteFacultyServlet</servlet-name>
+   <servlet-class>AdminDeleteFacultyServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>AdminDeleteFacultyServlet</servlet-name>
+   <url-pattern>/AdminDeleteFacultyServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>AdminAddStudentServlet</servlet-name>
+   <servlet-class>AdminAddStudentServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>AdminAddStudentServlet</servlet-name>
+   <url-pattern>/AdminAddStudentServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>AdminDeleteStudentServlet</servlet-name>
+   <servlet-class>AdminDeleteStudentServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>AdminDeleteStudentServlet</servlet-name>
+   <url-pattern>/AdminDeleteStudentServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>AdminDeleteCourseServlet</servlet-name>
+   <servlet-class>AdminDeleteCourseServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>AdminDeleteCourseServlet</servlet-name>
+   <url-pattern>/AdminDeleteCourseServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>AdminAssignCourseServlet</servlet-name>
+   <servlet-class>AdminAssignCourseServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>AdminAssignCourseServlet</servlet-name>
+   <url-pattern>/AdminAssignCourseServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>AdminAddCourseServlet</servlet-name>
+   <servlet-class>AdminAddCourseServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>AdminAddCourseServlet</servlet-name>
+   <url-pattern>/AdminAddCourseServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>GetCourseIDS</servlet-name>
+   <servlet-class>GetCourseIDS</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>GetCourseIDS</servlet-name>
+   <url-pattern>/GetCourseIDS</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>GetActiveCourseIDS</servlet-name>
+   <servlet-class>GetActiveCourseIDS</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>GetActiveCourseIDS</servlet-name>
+   <url-pattern>/GetActiveCourseIDS</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>AdminExportServlet</servlet-name>
+   <servlet-class>AdminExportServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>AdminExportServlet</servlet-name>
+   <url-pattern>/AdminExportServlet</url-pattern>
+</servlet-mapping>
+
+</web-app>

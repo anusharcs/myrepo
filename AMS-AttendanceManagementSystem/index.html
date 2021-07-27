@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<style>
+	body{
+		font-family:'Garamond';
+		font-size:130%;
+		color:#D79D30;
+		background-color:Black;
+		padding-left: 8px;
+	}
+
+	input[type=text], input[type=password]{
+	  width: 170px;
+	  height: 7px;
+	  padding: 12px;
+	  margin: 7px 4px 22px 0;
+	  border: none;
+	  background: #fbfcd4;
+	  box-sizing: border-box;
+	 
+	}
+
+	form{
+		background-color: #151515;
+		align-self: center; 
+		box-sizing: border-box; 
+		padding: 70px; 
+		padding-left: 140px;
+		margin-left: auto; 
+		margin-right: auto;
+		width: 540px;
+		height: 440px;
+	}
+
+    button{
+		border-radius: 4px;
+		width: 120px;
+		height: 25px;
+        border: 2px solid #D79D30;
+        background-color: transparent;
+        color:#D79D30;
+	}
+	button:hover,input[type=button]:hover{
+		border: 2px solid black;
+		color: black;
+		background-color: #D79D30;
+	}
+
+</style>
+</head>
+
+<body>
+    <img class="logo" src="logo.jpg" style="width:6%;height:16%;float:left" alt="logo">
+	<h2 style="align-self:left;color:#D79D30;padding-top: 20px;"> Attendance Management System</h2>
+    
+    <div>
+    <form class="loginform" name="login" id="login" action="AMSLogin" method="POST">
+        <h3>Login</h3>
+        <label for="username">Username:	</label>
+        <input type="text" name="username" id="username" style=" margin-left: 10px; "><br>
+        <label for="pwd">Password:</label>
+        <input type="Password" name="password" id="pwd" style="margin-left: 15px;"><br>
+        <button type="submit" name="submit" value="Submit" >Submit</button>
+    </form>
+    </div>
+    </body>
+    </html>
+
+

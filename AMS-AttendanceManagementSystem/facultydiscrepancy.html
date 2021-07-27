@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+		body{
+			font-family:'Garamond';
+			font-size:130%;
+			color:#D79D30;
+			background-color:Black;
+			padding-left: 8px;
+		}
+		.topnav{
+			width: 100%;
+			overflow: hidden;
+			background-color:#D79D30;
+		}
+		.topnav a{
+			float: right;
+			  color: Black;
+			  text-align: center;
+			  padding: 14px 16px;
+			  text-decoration: none;
+			  font-size: 17px;
+			  width:12%;
+		}
+	
+		.topnav a:hover{
+			color:#fbfcd4;
+		}
+		.topnav a.active {
+			  color: #fbfcd4;
+		  }
+		input[type=text], input[type=password]{
+            border: none;
+            display: inline;
+            font-family: inherit;
+            font-size: inherit;
+            padding: none;
+            width: auto;
+            background-color: #151515;
+            color:#D79D30;
+		 
+		}
+		button,input[type=button]{
+			border: 2px solid #D79D30;
+			color: #fbfcd4;
+			background-color: #151515;
+			border-radius: 4px;
+			width: 120px;
+			height: 25px;
+		}
+		button:hover,input[type=button]:hover{
+			border: 2px solid black;
+			color: black;
+			background-color: #D79D30;
+		}
+	
+		  form{
+			  background-color: #151515;
+			align-self: center; 
+			box-sizing: border-box; 
+			padding: 70px; 
+			padding-left: 140px;
+			margin-left: auto; 
+			margin-right: auto;
+			width: 560px;
+			height: 490px;
+		  }
+	
+		  aside {
+		  width: 20%;
+		  padding-left: 15px;
+		  float: left;
+		  font-style: italic;
+		  background-color: #151515;
+		  color: #D79D30;
+		}
+
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            padding: 10px;
+        }
+
+        th,td{
+            height: 35px;
+            vertical-align: middle;
+            padding: 15px;
+            text-align: left;
+            background-color: #151515;
+        }
+	</style>
+        
+    <script>
+        var request;  
+        function sendInfo(value)  
+        {   
+            if(window.XMLHttpRequest){  
+            request=new XMLHttpRequest();  
+            }  
+            else if(window.ActiveXObject){  
+            request=new ActiveXObject("Microsoft.XMLHTTP");  
+            }  
+            
+            try  
+            {  
+                request.onreadystatechange=getInfo;  
+                request.open("GET", "./FacultyDiscrepancy", true);
+                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.send(); 
+            }  
+            catch(e)  
+            {  
+            alert("Unable to connect to server");  
+            }  
+        }  
+          
+        function getInfo(){  
+        if(request.readyState==4 && request.status==200){   
+            var val=request.responseText;
+            document.getElementById('disclist').innerHTML=val;  
+        }  
+        } 
+        
+        function discprocess(stat,id){
+            var res = id.split(";");
+            var stuid=res[0];
+            var acid=res[1];
+            var sessid=res[2];
+            var url="stu_id="+stuid+"&acid="+acid+"&sess_id="+sessid+"&status="+stat; 
+            if(window.XMLHttpRequest){  
+            request=new XMLHttpRequest();  
+            }  
+            else if(window.ActiveXObject){  
+            request=new ActiveXObject("Microsoft.XMLHTTP");  
+            }  
+            
+            try  
+            {  
+                request.onreadystatechange=function() {
+                    if(request.readyState==4 && request.status==200){ 
+                        var val=request.responseText; 
+                        var btid=id+"approved"; 
+                        var bt1id=id+"denied"; 
+                        var tble=id+"table";
+                        var form = document.getElementById(btid);
+                        var form1 = document.getElementById(bt1id);
+                        form.remove();
+                        form1.remove();
+                        var row=document.getElementById(tble);
+                        var tdata=row.cells[4];
+                        tdata.innerHTML=val;
+                    }
+                };  
+                request.open("POST", "./FacultyProcessDiscrepancy", true);
+                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.send(url); 
+            }  
+            catch(e)  
+            {  
+            alert("Unable to connect to server");  
+            } 
+        }
+
+
+    </script>
+
+
+
+</head>
+
+
+<body onload="sendInfo()">
+
+    <div class="container">
+		<img class="logo" src="logo.jpg" style="width:6%;height:16%;float:left" alt="logo">
+	    <h2 style="align-self:left;color:#D79D30;padding-top: 20px;"> Attendance Management System</h2>
+		<div class="topnav">
+			<a href="AMSLogout">Logout</a>
+			<a class="active" href="./facultydiscrepancy.html">Discrepancy</a>
+			<a href="./facultyod.html">OD</a>
+			<a href="./FacultyHomePage.html">Home</a>
+		</div>
+	</div>
+
+    <div id="disclist"></div>
+    
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Attendance Mangament System</title>
+	<style>
+		body{
+			font-family:'Garamond';
+			font-size:130%;
+			color:#D79D30;
+			background-color:Black;
+			padding-left: 8px;
+		}
+		.topnav{
+			width: 100%;
+			overflow: hidden;
+			background-color:#D79D30;
+		}
+		.topnav a{
+			float: right;
+			  color: Black;
+			  text-align: center;
+			  padding: 14px 16px;
+			  text-decoration: none;
+			  font-size: 17px;
+			  width:12%;
+		}
+	
+		.topnav a:hover{
+			color:#fbfcd4;
+		}
+		.topnav a.active {
+			  color: #fbfcd4;
+		  }
+		input[type=text], input[type=password]{
+		width: 170px;
+		height: 7px;
+		padding: 12px;
+		margin: 7px 4px 22px 0;
+		border: none;
+		background: #fbfcd4;
+		box-sizing: border-box;
+		 
+		}
+		button,input[type=button]{
+			border: 2px solid #D79D30;
+			color: #fbfcd4;
+			background-color: #151515;
+			border-radius: 4px;
+			width: 120px;
+			height: 25px;
+		}
+		button:hover,input[type=button]:hover{
+			border: 2px solid black;
+			color: black;
+			background-color: #D79D30;
+		}
+	
+		  form{
+			  background-color: #151515;
+			align-self: center; 
+			box-sizing: border-box; 
+			padding: 70px; 
+			padding-left: 140px;
+			margin-left: auto; 
+			margin-right: auto;
+			width: 560px;
+			height: 490px;
+		  }
+	
+		  aside {
+		  width: 20%;
+		  padding-left: 15px;
+		  float: left;
+		  font-style: italic;
+		  background-color: #151515;
+		  color: #D79D30;
+		}
+	</style>
+</head>
+<body>
+
+
+	<div class="container">
+		<img class="logo" src="logo.jpg" style="width:6%;height:16%;float:left" alt="logo" >
+		<h2 style="align-self:left;color:#D79D30;padding-top: 20px;"> Attendance Management System</h2>
+		<div class="topnav">
+			<a href="AMSLogout">Logout</a>
+			<a href="./StudentDiscrepancyHome.html">Discrepancy</a>
+			<a class="active" href="./StudentODHome.html">OD</a>
+			<a href="./StudentHomePage.html">Home</a>
+		</div>
+	</div>
+
+	<form name="s_odform" action="./StudentODSubmitServlet" method="POST">
+		<h3>Request for OD</h3>
+		<label for="acid" >Course ID:</label>
+		<input type="text" name="acid" id="acid" style="margin-left: 58px;"><br>
+		<label for="sessionID">Session ID:</label>
+		<input type="text" name="session_id" id="sessionID" style="margin-left: 55px;"><br>
+		<label for="justification">Justification:</label>
+		<input type="text" name="justification" id="justification" style="margin-left: 48px;"><br>
+		<label for="proof">Proof(drive link):</label>
+		<input type="text" name="proof" id="proof" style="margin-left: 10px;"><br>
+		<button type="submit" name="submit" value="Submit" style="margin-left: 30px;">Submit</button>
+		<button type="submit" formaction="./StudentOD.html" style="margin-left: 10px;">View History</button>
+	</form>	
+
+</body>
+</html>

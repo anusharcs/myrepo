@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family:'Garamond';
+            font-size:130%;
+            color:#D79D30;
+            background-color:Black;
+            padding-left: 8px;
+        }
+        .topnav{
+            width: 100%;
+            overflow: hidden;
+            background-color:#D79D30;
+        }
+        .topnav a{
+            float: right;
+              color: Black;
+              text-align: center;
+              padding: 14px 16px;
+              text-decoration: none;
+              font-size: 17px;
+              width:12%;
+        }
+    
+        .topnav a:hover{
+            color:#fbfcd4;
+        }
+        .topnav a.active {
+              color: #fbfcd4;
+          }
+        input[type=text], input[type=password], input[type=email], input[type=number]{
+        width: 170px;
+        height: 7px;
+        padding: 12px;
+        margin-right: 15px;
+        margin-left: 0px;
+        margin-top:22px;
+        margin-bottom: 4px;
+        border: none;
+        background: #fbfcd4;
+        box-sizing: border-box;
+         
+        }
+        input[type=button]{
+            border: 2px solid #D79D30;
+            color: #fbfcd4;
+            background-color: #151515;
+            border-radius: 4px;
+            width: 120px;
+            height: 25px;
+        }
+        input[type=button]:hover{
+            border: 2px solid black;
+            color: black;
+            background-color: #D79D30;
+        }
+    
+          form{
+              background-color: #151515;
+            align-self: center; 
+            box-sizing: border-box; 
+            padding: 50px; 
+            padding-left: 140px;
+            margin-left: auto; 
+            margin-right: auto;
+            width: 590px;
+            height: 490px;
+          }
+    
+          aside {
+          width: 20%;
+          padding-left: 15px;
+          float: left;
+          font-style: italic;
+          background-color: #151515;
+          color: #D79D30;
+        }
+    
+        .dropdown {
+          float: right;
+          overflow: hidden;
+        }
+    
+        .dropdown .dropbtn {
+          font-size: 16px;  
+          border: none;
+          outline: none;
+          color: black;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 0;
+    
+        }
+    
+        .dropdown:hover .dropbtn {
+          color: #fbfcd4;
+        }
+    
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+    
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+    
+        .dropdown-content a {
+          float: none;
+          color: #D79D30;
+          background-color:#151515;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+          width:78%;
+        }
+    
+        .dropdown-content a:hover {
+          background-color: black;
+          color:#D79D30;
+        }
+    
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+
+        #export{
+            display: none;
+        }
+        
+
+        
+        
+    </style>
+    <script>  
+    
+        var request; 
+        var request1; 
+        function sendInfo(value)  
+        { 
+            if(window.XMLHttpRequest){  
+            request=new XMLHttpRequest();  
+            }  
+            else if(window.ActiveXObject){  
+            request=new ActiveXObject("Microsoft.XMLHTTP");  
+            }  
+            
+            try  
+            {  
+                request.onreadystatechange=getInfo;  
+                request.open("GET", "GetActiveCourseIDS", true);
+                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.send(); 
+            }  
+            catch(e)  
+            {  
+            alert("Unable to connect to server");  
+            }  
+        }  
+          
+        function getInfo(){  
+        if(request.readyState==4 && request.status==200){  
+            var val=request.responseText;  
+            document.getElementById('acids').innerHTML=val;  
+        }  
+        }  
+
+        function getdetails(){
+            var id=document.getElementById("acid").value;
+            var url="acid="+id;
+            if(window.XMLHttpRequest){  
+            request1=new XMLHttpRequest();  
+            }  
+            else if(window.ActiveXObject){  
+            request1=new ActiveXObject("Microsoft.XMLHTTP");  
+            }  
+            
+            try  
+            {  
+                request1.onreadystatechange=exportdetails;
+                request1.open("POST", "./AdminExportServlet", true);
+                request1.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request1.send(url); 
+            }  
+            catch(e)  
+            {  
+            alert("Unable to connect to server");  
+            } 
+        }
+
+        function exportdetails(){
+            if(request1.readyState==4 && request1.status==200){
+                var val=request1.responseText;
+                document.getElementById("export").innerHTML=val;  
+                exportTableToCSV(document.getElementById("acid").value+"_Attendance.csv");
+                document.getElementById("acid").value="";
+            } 
+        }
+
+
+    function downloadCSV(csv, filename) {
+        var csvFile;
+        var downloadLink;
+
+        // CSV file
+        csvFile = new Blob([csv], {type: "text/csv"});
+
+        // Download link
+        downloadLink = document.createElement("a");
+
+        // File name
+        downloadLink.download = filename;
+
+        // Create a link to the file
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+
+        // Hide download link
+        downloadLink.style.display = "none";
+
+        // Add the link to DOM
+        document.body.appendChild(downloadLink);
+
+        // Click download link
+        downloadLink.click();
+    }
+
+
+    function exportTableToCSV(filename) {
+        var csv = [];
+        var rows = document.querySelectorAll("table tr");
+        
+        for (var i = 0; i < rows.length; i++) {
+            var row = [], cols = rows[i].querySelectorAll("td, th");
+            
+            for (var j = 0; j < cols.length; j++) 
+                row.push(cols[j].innerText);
+            
+            csv.push(row.join(","));        
+        }
+
+        // Download CSV file
+        downloadCSV(csv.join("\n"), filename);
+    }
+
+          
+    </script> 
+    
+</head>
+
+
+
+<body onload="sendInfo()">
+    
+    <div class="container">
+        <img class="logo" src="logo.jpg" alt="logo" style="width:6%; height:6%; float:left;">
+        <h2 style="align-self:left;color:#D79D30;padding-top: 20px;"> Attendance Management System</h2>
+        <div class="topnav">
+            <a href="AMSLogout">Logout</a>
+            <div class="dropdown">
+                <button class="dropbtn">Student
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="adminAddStudent.html">Add Student</a>
+                    <a href="adminDeleteStudent.html">Delete Student</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Course
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="adminAddCourse.html">Add Course</a>
+                    <a href="adminDeleteCourse.html">Delete Course</a>
+                    <a href="adminAssignCourse.html">Assign Course</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="active dropbtn">Faculty
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="adminAddFaculty.html">Add Faculty</a>
+                    <a href="adminDeleteFaculty.html">Delete Faculty</a>
+                </div>
+            </div>
+            <a href="adminExport.html">Export</a>
+        </div>
+    </div>
+    <form>
+        <h3>Export Data</h3>
+        <label for="acid">Active Course ID:</label>
+        <input list="acids" id="acid" required style="margin-right:10px" name="acid"/>
+        <datalist id="acids">
+        </datalist>
+        <input type="button" name="submit" value="Export" style="margin-left: 25%;margin-top: 10px;" onclick="getdetails()">
+    </form>
+    <div id="export"><p></p></div>
+    
+</body>
+</html>
